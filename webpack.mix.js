@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +11,23 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js("resources/js/app.js", "public/dist/js")
+
+    .js("resources/js/ckeditor-classic.js", "public/dist/js")
+    .js("resources/js/ckeditor-inline.js", "public/dist/js")
+    .js("resources/js/ckeditor-balloon.js", "public/dist/js")
+    .js("resources/js/ckeditor-balloon-block.js", "public/dist/js")
+    .js("resources/js/ckeditor-document.js", "public/dist/js")
+    //.js("resources/js/product-show.js", "public/dist/js")
+    //.js("resources/js/cart.vue.js", "public/dist/js")
+    .js("resources/js/address.js","public/dist/js")
+    .js("resources/js/chart.js","public/dist/js")
+    //.css("public/dist/css/_app.css", "public/dist/css/app.css")
+    .css("resources/css/_tailwind.css", "public/dist/css/build.css")
+    .options({
+        processCssUrls: false,
+    })
+    //.copyDirectory("resources/json", "public/dist/json")
+    //.copyDirectory("resources/fonts", "public/dist/fonts")
+    //.copyDirectory("resources/images", "public/dist/images")
+    .vue()
