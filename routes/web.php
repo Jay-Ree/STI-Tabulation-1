@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/Schedule', [SchedulesController::class, 'ScheduleIndex'])->name('Schedules.show');
     Route::get('/', [Homecontroller::class, 'index'])->name('home');
-    Route::get('/linkstorage', function () {
-        Artisan::call('storage:link');
+    Route::get('generate', function (){
+        \Illuminate\Support\Facades\Artisan::call('storage:link');
+        echo 'ok';
     });
 
 
