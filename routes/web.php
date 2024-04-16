@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/Schedule', [SchedulesController::class, 'ScheduleIndex'])->name('Schedules.show');
     Route::get('/', [Homecontroller::class, 'index'])->name('home');
-    Route::get('/linkstorage', function () {
-        $targetFolder = base_path().'/storage/app/public';
-        $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage';
-        symlink($targetFolder, $linkFolder); 
+    Route::get('/clear', function () {
+        Storage::deleteDirectory('public');
+        Storage::makeDirectory('public');
+    
+        Artisan::call('route:clear');
+        Artisan::call('storage:link', [] );
     });
 
 
