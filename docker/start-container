@@ -27,5 +27,3 @@ if [ $# -gt 0 ];then
 else
     /usr/bin/supervisord
 fi
-
-php artisan storage:link
