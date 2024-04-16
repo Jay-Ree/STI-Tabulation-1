@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/Schedule', [SchedulesController::class, 'ScheduleIndex'])->name('Schedules.show');
     Route::get('/', [Homecontroller::class, 'index'])->name('home');
-    Route::get('/generate', function (){
-        \Illuminate\Support\Facades\Artisan::call('storage:link');
-        echo 'ok';
+    Route::get('/linkstorage', function () {
+        $targetFolder = base_path().'/storage/app/public';
+        $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage';
+        symlink($targetFolder, $linkFolder); 
     });
 
 
